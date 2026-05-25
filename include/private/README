@@ -1,0 +1,5 @@
+This directory can be used for include file which will
+be ignored by git. Thus they can be used for data and
+definitions, e.g. URLs, which could pose security
+risks if they were viewed on GitHub.
+

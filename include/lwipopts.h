@@ -11,8 +11,7 @@
  *                                                                            *
  ******************************************************************************/
 
-#ifndef _LWIPOPTS_EXAMPLE_COMMONH_H
-#define _LWIPOPTS_EXAMPLE_COMMONH_H
+#pragma once
 
 /* System options *************************************************************/
 
@@ -43,6 +42,8 @@
 //
 // Max queued TCP segments
 #define MEMP_NUM_TCP_SEG            32
+
+#define MEMP_NUM_SYS_TIMEOUT            (LWIP_NUM_SYS_TIMEOUT_INTERNAL + 8)
 
 #if !NO_SYS
 #define TCPIP_THREAD_STACKSIZE 8192
@@ -77,7 +78,10 @@
 //
 #define LWIP_ICMP                   1
 
+// The system timer to repeat pings is not enabled single shot mode
+#define PING_SINGLE_SHOT            1
 
+#define PING_RESULT(ping_ok)        set_ping_result(ping_ok)
 
 /* IP options *****************************************************************/
 
@@ -118,7 +122,7 @@
 //
 #define LWIP_UDP                    1
 
-
+#define LWIP_RAW                    1
 
 /* TCP options ****************************************************************/
 
@@ -246,4 +250,3 @@
 // Enable Mbed TLS debugging
 #define ALTCP_MBEDTLS_LIB_DEBUG     LWIP_DBG_ON
 
-#endif //_LWIPOPTS_EXAMPLE_COMMONH_H

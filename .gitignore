@@ -1,8 +1,9 @@
 build
+include/private/*.h
 tmp
 *.vpj
 *.vpw
-*.vpwhistuxml
+*.vpw*
 *.vtg
 debug.gdb
 debug_load.gdb

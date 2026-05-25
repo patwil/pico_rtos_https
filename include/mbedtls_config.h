@@ -10,20 +10,16 @@
  *                                                                            *
  ******************************************************************************/
 
-
+#pragma once
 
 /* Misc **********************************************************************/
 
 // Workaround for some Mbed TLS source files using INT_MAX without including limits.h
 #include <limits.h>
 
-
-
 /* System ********************************************************************/
 
 #define MBEDTLS_HAVE_TIME
-
-
 
 /* Mbed TLS features *********************************************************/
 
@@ -111,6 +107,7 @@
 #define MBEDTLS_MD5_C                               // MD5
 #define MBEDTLS_POLY1305_C                          // Poly1305 MAC
 #define MBEDTLS_SHA256_C                            // SHA 256
+#define MBEDTLS_SHA384_C                            // SHA 384
 #define MBEDTLS_SHA512_C                            // SHA 512
 
 // Elliptic curves
