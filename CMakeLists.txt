@@ -93,13 +93,13 @@ endif()
 #
 # Create header file doesn't exist.
 #
-set(WIFI_HEADER ${CMAKE_CURRENT_BINARY_DIR}/generated/pico_ssid.h)
+set(WIFI_HEADER "${CMAKE_CURRENT_BINARY_DIR}/generated/wifi_config.h")
 if(NOT EXISTS "${WIFI_HEADER}")
   if(NOT DEFINED ENV{PICO_WIFI_SSID} OR "$ENV{PICO_WIFI_SSID}" STREQUAL "")
-    message(FATAL_ERROR "PICO_WIFI_SSID env var be be set to a non-empty string.")
+    message(FATAL_ERROR "PICO_WIFI_SSID env var must be set to a non-empty string.")
   endif()
   if(NOT DEFINED ENV{PICO_WIFI_PASSWORD} OR "$ENV{PICO_WIFI_PASSWORD}" STREQUAL "")
-    message(FATAL_ERROR "PICO_WIFI_PASSWORD env var be be set to a non-empty string.")
+    message(FATAL_ERROR "PICO_WIFI_PASSWORD env var must be set to a non-empty string.")
   endif()
 endif()
 
@@ -115,8 +115,6 @@ else()
     bash "${CMAKE_SOURCE_DIR}/scripts/mkssidheader.sh"
   )
 endif()
-
-set(WIFI_HEADER "${CMAKE_BINARY_DIR}/generated/wifi_config.h")
 
 add_custom_command(
   OUTPUT "${WIFI_HEADER}"
@@ -141,11 +139,11 @@ add_dependencies(pico_rtos_https generate_wifi_header)
 #
 # Create header file if it doesn't exist.
 #
-set(HTTPS_CA_HEADER ${CMAKE_CURRENT_BINARY_DIR}/generated/https_ca_cert.h)
+set(HTTPS_CA_HEADER "${CMAKE_CURRENT_BINARY_DIR}/generated/https_ca_cert.h")
 
 if(NOT EXISTS "${HTTPS_CA_HEADER}")
   if(NOT DEFINED ENV{HTTPS_HOST} OR "$ENV{HTTPS_HOST}" STREQUAL "")
-    message(FATAL_ERROR "HTTPS_HOST env var be be set to a non-empty string.")
+    message(FATAL_ERROR "HTTPS_HOST env var must be set to a non-empty string.")
   endif()
 endif()
 
